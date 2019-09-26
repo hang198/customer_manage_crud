@@ -17,10 +17,16 @@
     <div class="form-group">
         <label for="exampleInputEmail1">Name</label>
         <input type="text" name="name" value="{{ $customer->name }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+        @if($errors->has('name'))
+            <span class="text-danger">{{ $errors->first('name') }}</span>
+        @endif
     </div>
     <div class="form-group">
         <label for="exampleInputPassword1">Age</label>
         <input type="text" name="age" value="{{ $customer->age }}" class="form-control" id="exampleInputPassword1" >
+        @if($errors->has('age'))
+            <span class="text-danger">{{ $errors->first('age') }}</span>
+        @endif
     </div>
     <button type="submit" class="btn btn-primary">OK</button>
     <a href="{{ route('index') }}"><button type="button" class="btn btn-primary">Back</button></a>

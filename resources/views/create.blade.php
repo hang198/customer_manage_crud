@@ -15,12 +15,18 @@
 <form method="post" action="{{ route('store') }}">
     @csrf
     <div class="form-group">
-        <label for="exampleInputEmail1">Name</label>
-        <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+        <label>Name</label>
+        <input type="text" name="name" class="form-control" value="{{ old('name') }}" id="exampleInputEmail1" aria-describedby="emailHelp" >
+        @if($errors->has('name'))
+            <span class="text-danger">{{ $errors->first('name') }}</span>
+            @endif
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Age</label>
-        <input type="text" name="age" class="form-control" id="exampleInputPassword1" >
+        <label>Age</label>
+        <input type="text" name="age" class="form-control" value="{{ old('age') }}" id="exampleInputPassword1" >
+        @if($errors->has('age'))
+            <span class="text-danger">{{ $errors->first('age') }}</span>
+        @endif
     </div>
     <button type="submit" class="btn btn-primary">OK</button>
     <a href="{{ route('index') }}"><button type="button" class="btn btn-primary">Back</button></a>

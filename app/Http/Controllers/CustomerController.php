@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\Http\Requests\CreateCustomerRequest;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -14,7 +15,7 @@ class CustomerController extends Controller
     public function create() {
         return view('create');
     }
-    public function store(Request $request) {
+    public function store(CreateCustomerRequest $request) {
         $customer = new Customer();
         $customer->name = $request->name;
         $customer->age = $request->age;
@@ -29,7 +30,7 @@ class CustomerController extends Controller
         $customer = Customer::findOrFail($id);
         return view('edit',compact('customer'));
     }
-    public function update(Request $request,$id) {
+    public function update(CreateCustomerRequest $request,$id) {
         $customer = Customer::findOrFail($id);
         $customer->name = $request->name;
         $customer->age = $request->age;
